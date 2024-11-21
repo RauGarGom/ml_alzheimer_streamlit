@@ -42,7 +42,7 @@ def img_model_prediction(image_path,img_size=32):
     '''Img_size must be the same as the one used by the training of the model.
     Model 4 (used in the demo) is made with 64x64'''
     image = cv2.imdecode(image_path, cv2.IMREAD_COLOR)
-    image = recortar_centro_relativo(1,0.5)
+    # image = recortar_centro_relativo(1,0.5)
     # mapping = {
     #     0: 'Non Demented',
     #     1: 'Very Mild Demented',
