@@ -28,14 +28,24 @@ mapping_img = {
         3: 'Moderate Demented'
     }
 with st.sidebar:
+    st.image('./img/aihlz_logo.png',width=80)
     st.title("Charts of the predictions")
     if st.session_state['chart'] == None:
         st.write("No chart to display yet.")
         
 
 # Title of the app and header
-st.title('Alzheimer diagnosis tool')
-st.subheader('Medical tool for Alzheimer diagnosis by Raúl García')
+col4, col5, col6 = st.columns(3)
+with col4:
+    st.write(' ')
+
+with col5:
+    st.image('./img/aihlz_logo.png',width=200)
+
+with col6:
+    st.write(' ')
+
+st.subheader('Tool for Alzheimer diagnosis by Raúl García')
 st.subheader('')
 
 

@@ -10,6 +10,7 @@ from utils import model_prediction, img_model_prediction
 
 
 ###Global variables
+uploaded_img = None
 if "result" not in st.session_state:
     st.session_state['result'] = ''
 if "chart" not in st.session_state:
@@ -27,14 +28,24 @@ mapping_img = {
         3: 'Moderate Demented'
     }
 with st.sidebar:
+    st.image('./img/aihlz_logo.png',width=80)
     st.title("Charts of the predictions")
     if st.session_state['chart'] == None:
         st.write("No chart to display yet.")
         
 
 # Title of the app and header
-st.title('Alzheimer diagnosis tool')
-st.subheader('Medical tool for Alzheimer diagnosis by Raúl García')
+col4, col5, col6 = st.columns(3)
+with col4:
+    st.write(' ')
+
+with col5:
+    st.image('./img/aihlz_logo.png',width=200)
+
+with col6:
+    st.write(' ')
+
+st.subheader('Tool for Alzheimer diagnosis by Raúl García')
 st.subheader('')
 
 
@@ -83,11 +94,13 @@ if st.button('Run prediction'):
 
 if st.session_state['class_result'] and st.session_state['class_result'][3] > 0:
     st.header('MRI scan prediction')
-    uploaded_img = st.file_uploader("Upload the patient's MRI scan", type=["jpg", "jpeg", "png"])
-    # enable = st.checkbox("Enable camera")
-    # uploaded_img = st.camera_input("Picture of the MRI scan", disabled=not enable)
-    if st.button('Run image prediction'):
-        img_bytes = np.asarray(bytearray(uploaded_img.read()), dtype=np.uint8)
+    enable = st.checkbox("Enable camera")
+    uploaded_img = st.camera_input("Picture of the MRI scan", disabled=not enable) #
+    if uploaded_img:
+        st.write('Picture taken!')
+    if uploaded_img is not None:
+        uploaded_img = uploaded_img.getvalue()
+        img_bytes = np.asarray(bytearray(uploaded_img), dtype=np.uint8)
         result = img_model_prediction(img_bytes)
         # st.write(result)
         res_display = round(result[1].max()*100,2)
@@ -95,6 +108,17 @@ if st.session_state['class_result'] and st.session_state['class_result'][3] > 0:
         st.write('The model predicts the brain in the image is', mapping_img[result[0]], 'with a certainty of', res_display,'%')
         with st.sidebar:
             st.plotly_chart(px.pie(values=result[1].flatten(),names=mapping_img.values(), title='Probabilities of the prediction'),key=5) #,names=mapping.keys()
+
+    photo = st.file_uploader("Upload the patient's MRI scan", type=["jpg", "jpeg", "png"])
+    if st.button('Run image prediction'):
+        img_bytes = np.asarray(bytearray(photo.read()), dtype=np.uint8)
+        result = img_model_prediction(img_bytes)
+        # st.write(result)
+        res_display = round(result[1].max()*100,2)
+        # st.write(res_display)
+        st.write('The model predicts the brain in the image is', mapping_img[result[0]], 'with a certainty of', res_display,'%')
+        with st.sidebar:
+            st.plotly_chart(px.pie(values=result[1].flatten(),names=mapping_img.values(), title='Probabilities of the prediction'),key=6) #,names=mapping.keys()
 
 # pred = model.predict(user_input)
 # Display the user input
