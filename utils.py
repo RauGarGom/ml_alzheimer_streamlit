@@ -15,7 +15,7 @@ import cv2
 ### Loading of models
 with open('./model_2.pkl', 'rb') as f:
     class_model = pickle.load(f)
-img_model = models.load_model("./baseline_model_b.keras")
+img_model = models.load_model("./model_5.keras")
 img_scal = pickle.load(open("./aux_scal.pkl",'rb'))
 
 
