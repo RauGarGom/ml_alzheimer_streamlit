@@ -1,7 +1,7 @@
 keras==3.6.0
 numpy==2.0.2
 opencv-python-headless
-opencv-contrib-python
+opencv-contrib-python-headless
 plotly==5.24.1
 scikit-learn==1.5.2
 scipy==1.14.1
