@@ -12,7 +12,7 @@ from tensorflow.keras import models
 # from matplotlib.image import imread
 import cv2
 ### Loading of models
-img_model = models.load_model("./baseline_model_b.keras")
+img_model = models.load_model('./baseline_model_b.h5')
 img_scal = pickle.load(open("./aux_scal.pkl",'rb'))
 class_model = pickle.load(open("./model_2.pkl",'rb'))
 
