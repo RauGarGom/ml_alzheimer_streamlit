@@ -28,7 +28,15 @@ mapping_img = {
         3: 'Moderate Demented'
     }
 with st.sidebar:
-    st.image('./img/aihlz_logo.png',width=80)
+    col7, col8, col9 = st.columns(3)
+    with col7:
+        st.write(' ')
+
+    with col8:
+        st.image('./img/aihlz_logo.png',width=80)
+
+    with col9:
+        st.write(' ')
     st.title("Charts of the predictions")
     if st.session_state['chart'] == None:
         st.write("No chart to display yet.")
