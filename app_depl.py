@@ -39,7 +39,7 @@ with st.sidebar:
         st.write(' ')
     st.title("Charts of the predictions")
     if st.session_state['chart'] == None:
-        st.write("No chart to display yet.")
+        st.write("")
         
 
 # Title of the app and header
@@ -53,7 +53,7 @@ with col5:
 with col6:
     st.write(' ')
 
-st.subheader('Tool for Alzheimer diagnosis by Raúl García')
+st.subheader('AI tool for Alzheimer diagnosis by Raúl García')
 st.subheader('')
 
 
