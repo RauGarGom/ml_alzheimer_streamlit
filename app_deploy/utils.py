@@ -38,7 +38,7 @@ def model_prediction(mmse="1",funct_asses=1,memory="Yes",behav="Yes",adl=1):
         result_stream = 3
     return result, text_result, result_proba, result_stream
 
-def img_model_prediction(image_path,img_size=32):
+def img_model_prediction(image_path,img_size=64):
     '''Img_size must be the same as the one used by the training of the model.
     Model 4 (used in the demo) is made with 64x64'''
     image = cv2.imdecode(image_path, cv2.IMREAD_COLOR)
