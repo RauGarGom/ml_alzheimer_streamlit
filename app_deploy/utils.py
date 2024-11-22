@@ -13,10 +13,9 @@ from tensorflow.keras import models
 import cv2
 
 ### Loading of models
-with open('./model_2.pkl', 'rb') as f:
-    class_model = pickle.load(f)
 img_model = models.load_model("./model_5.keras")
 img_scal = pickle.load(open("./aux_scal.pkl",'rb'))
+class_model = pickle.load(open("./model_2.pkl",'rb'))
 
 
 def model_prediction(mmse="1",funct_asses=1,memory="Yes",behav="Yes",adl=1):
