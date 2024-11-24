@@ -8,11 +8,11 @@ from sklearn.model_selection import train_test_split
 # from sklearn.metrics import auc, roc_auc_score, accuracy_score, confusion_matrix
 # from xgboost import XGBClassifier
 import pickle
-from tensorflow.keras import models
+from keras import models
 # from matplotlib.image import imread
 import cv2
 ### Loading of models
-img_model = models.load_model(("../baseline_model_b.keras"))
+img_model = models.load_model(("./model_2.keras"))
 img_scal = pickle.load(open("./aux_scal.pkl",'rb'))
 class_model = pickle.load(open("./model_2.pkl",'rb'))
 
