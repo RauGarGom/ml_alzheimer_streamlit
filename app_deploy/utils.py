@@ -11,8 +11,12 @@ import pickle
 from keras import models
 # from matplotlib.image import imread
 import cv2
+import os
 ### Loading of models
-img_model = models.load_model(("./model_2.keras"))
+
+filepath = os.path.join(os.path.dirname(__file__), "model_2.keras")
+img_model = models.load_model(filepath)
+# img_model = models.load_model(("./model_2.keras"))
 img_scal = pickle.load(open("./aux_scal.pkl",'rb'))
 class_model = pickle.load(open("./model_2.pkl",'rb'))
 
