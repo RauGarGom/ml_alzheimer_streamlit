@@ -3,10 +3,12 @@ import os
 import numpy as np
 import streamlit as st
 import plotly.express as px
+import os
 # import numpy as np
 #  sys.path.append(os.path.abspath(r'C:\Users\raulg\Documents\THEBRIDGE_DS\0.-Repo_Git\ml_alzheimer_class\src'))
 # sys.path.append(os.path.relpath('/src'))
 from utils import model_prediction, img_model_prediction
+imgpath = os.path.join(os.path.dirname(__file__), "ailzh_logo.png")
 
 
 ###Global variables
@@ -33,7 +35,7 @@ with st.sidebar:
         st.write(' ')
 
     with col8:
-        st.image('./img/aihlz_logo.png',width=80)
+        st.image(imgpath,width=80)
 
     with col9:
         st.write(' ')
@@ -48,7 +50,7 @@ with col4:
     st.write(' ')
 
 with col5:
-    st.image('./img/aihlz_logo.png',width=200)
+    st.image(imgpath,width=200)
 
 with col6:
     st.write(' ')
