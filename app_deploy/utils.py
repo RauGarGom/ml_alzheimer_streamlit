@@ -14,11 +14,14 @@ import cv2
 import os
 ### Loading of models
 
-filepath = os.path.join(os.path.dirname(__file__), "model_2.keras")
-img_model = models.load_model(filepath)
+filepath_img = os.path.join(os.path.dirname(__file__), "model_2.keras")
+filepath_aux = os.path.join(os.path.dirname(__file__), "aux_scal.pkl")
+filepath_class = os.path.join(os.path.dirname(__file__), "model_2.pkl")
+
+img_model = models.load_model(filepath_img)
 # img_model = models.load_model(("./model_2.keras"))
-img_scal = pickle.load(open("./aux_scal.pkl",'rb'))
-class_model = pickle.load(open("./model_2.pkl",'rb'))
+img_scal = pickle.load(open(filepath_aux,'rb'))
+class_model = pickle.load(open(filepath_class,'rb'))
 
 
 def model_prediction(mmse="1",funct_asses=1,memory="Yes",behav="Yes",adl=1):
